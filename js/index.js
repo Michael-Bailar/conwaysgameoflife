@@ -3,12 +3,13 @@ const worldBackground = "lightslategray"
 const cellColor = "navy"
 //declare speed
 const generationSpeed = 200
+let generation = 0
 
 //declare game world constants
 const gameWorld = document.getElementById('gameWorld')
 const context = gameWorld.getContext('2d')
 const worldSize = 500
-const worldScaleAmount = 50
+const worldScaleAmount = 10
 const worldScale = worldSize/worldScaleAmount
 const worldResolution = worldSize/worldScale
 
@@ -19,15 +20,6 @@ const worldResolution = worldSize/worldScale
 
 setupWorld() //setupWorldAndCells.js
 generateCells()//setupWorldAndCells.js
-
-// var canvas = document.getElementById("gameWorld")
-
-gameWorld.addEventListener('click', () =>{
-    const gridX = Math.ceil(((event.pageX - gameWorld.offsetLeft)/worldScale))-1
-    const gridY = Math.ceil(((event.pageY - gameWorld.offsetTop)/worldScale))-1
-    cells[gridX][gridY].living = true
-    generateCells()
-})
 
 //radomly set cells true or false on click
 const randomizeButton = document.getElementById("randomize")
@@ -61,4 +53,13 @@ const runSim = () => {
         clearInterval(runSimInterval)
     }
 }
+
+gameWorld.addEventListener('click', () =>{
+    const gridX = Math.ceil(((event.pageX - gameWorld.offsetLeft)/worldScale))-1
+    const gridY = Math.ceil(((event.pageY - gameWorld.offsetTop)/worldScale))-1
+    if(startStopButton.classList.contains("off")) {
+        cells[gridX][gridY].living = true
+        generateCells()
+    }
+})
 

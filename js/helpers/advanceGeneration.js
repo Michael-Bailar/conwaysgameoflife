@@ -14,6 +14,7 @@ const advanceGeneration = () => {
         }
     }
     cells = newCells
+    generation += 1 //index.js
     generateCells()
 }
 
