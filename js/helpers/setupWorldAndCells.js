@@ -10,7 +10,10 @@ const createCells = () => {
     for(x = 0; x < worldResolution; x++){
         let cols = new Array(worldResolution)
         for(y = 0; y < worldResolution; y++){
-            cols[y] = {living:false}
+            cols[y] = {
+                living:false,
+                id: (`${x}x${y}`),
+            }
         }
         arr[x] = cols
     }
