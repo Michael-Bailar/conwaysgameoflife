@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game of Life</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas></canvas>
-    <script src="./index.js"></script>
+    <canvas id="gameWorld"></canvas>
+    <script src="js/helpers/setupWorldAndCells.js"></script>
+    <script src="js/helpers/randomFill.js"></script>
+    <script src="js/helpers/advanceGeneration.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
