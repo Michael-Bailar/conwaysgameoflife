@@ -9,7 +9,7 @@ let generation = 0
 const gameWorld = document.getElementById('gameWorld')
 const context = gameWorld.getContext('2d')
 const worldSize = 500
-const worldScaleAmount = 10
+const worldScaleAmount = 50
 const worldScale = worldSize/worldScaleAmount
 const worldResolution = worldSize/worldScale
 
@@ -39,7 +39,7 @@ const randomize = () => {
 } 
 
 
-//running the app when start/stop button is clicked
+//running the game when start/stop button is clicked
 const startStopButton = document.getElementById("startStop")
 let runSimInterval
 const runSim = () => {
@@ -54,11 +54,17 @@ const runSim = () => {
     }
 }
 
+// adds ability to click on the grid to set cells on and off if not running
 gameWorld.addEventListener('click', () =>{
     const gridX = Math.ceil(((event.pageX - gameWorld.offsetLeft)/worldScale))-1
     const gridY = Math.ceil(((event.pageY - gameWorld.offsetTop)/worldScale))-1
     if(startStopButton.classList.contains("off")) {
-        cells[gridX][gridY].living = true
+        if(cells[gridX][gridY].living === true) {
+            cells[gridX][gridY].living = false
+        } else {
+            cells[gridX][gridY].living = true
+        }
+        
         generateCells()
     }
 })
