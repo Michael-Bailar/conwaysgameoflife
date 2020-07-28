@@ -2,7 +2,7 @@
 const worldBackground = "lightslategray"
 const cellColor = "navy"
 //declare speed
-const generationSpeed = 500
+const generationSpeed = 100
 
 //declare game world constants
 const gameWorld = document.getElementById('gameWorld')
@@ -18,9 +18,17 @@ generateCells() //setupWorldAndCells.js
 
 
 const startStop = document.getElementById("startStop")
-
+let runSimInterval
 
 //running the app with predefined speed
 const runSim = () => {
-    setInterval(advanceGeneration, generationSpeed)
+    if (startStop.classList.contains("off")) {
+        startStop.classList.remove("off")
+        startStop.classList.add("on")
+        runSimInterval = setInterval(advanceGeneration, generationSpeed)
+    } else {
+        startStop.classList.remove("on")
+        startStop.classList.add("off")
+        clearInterval(runSimInterval)
+    }
 }
