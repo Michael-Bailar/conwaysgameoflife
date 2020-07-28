@@ -16,5 +16,11 @@ setupWorld() //setupWorldAndCells.js
 randomFill() //randomFill.js
 generateCells() //setupWorldAndCells.js
 
+
+const startStop = document.getElementById("startStop")
+
+
 //running the app with predefined speed
-setInterval(advanceGeneration, generationSpeed)
+const runSim = () => {
+    setInterval(advanceGeneration, generationSpeed)
+}
