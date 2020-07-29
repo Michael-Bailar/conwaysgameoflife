@@ -2,21 +2,17 @@
 const worldBackground = "lightslategray"
 const cellColor = "navy"
 //declare speed
-const generationSpeed = 50
+let generationSpeed = 50
 let generation = 0
 
 //declare game world constants
 const gameWorld = document.getElementById('gameWorld')
 const context = gameWorld.getContext('2d')
 const worldSize = 500
-const worldScaleAmount = 25
-const worldScale = worldSize/worldScaleAmount
-const worldResolution = worldSize/worldScale
-
-
-
-
-
+//number of cells wide
+let worldScaleAmount = 25
+let worldScale = worldSize/worldScaleAmount
+let worldResolution = worldSize/worldScale
 
 setupWorld() //setupWorldAndCells.js
 generateCells()//setupWorldAndCells.js
@@ -99,3 +95,61 @@ const setGenerationDisplay = () => {
     generationDisplay.innerHTML = `Generation: ${generation}`
 }
 setGenerationDisplay()
+
+//set the grid size display on the page
+let gridSizeDisplay = document.getElementById("gridSizeDisplay")
+const setGridSizeDisplay = () => {
+    gridSizeDisplay.innerHTML = `Grid Size: ${worldScaleAmount} x ${worldScaleAmount}`
+}
+setGridSizeDisplay()
+
+//increase the number of cells 
+const increaseGridSize = () => {
+    if (worldScaleAmount < 100) {
+        worldScaleAmount = worldScaleAmount + 1
+        worldScale = worldSize/worldScaleAmount
+        worldResolution = worldSize/worldScale
+        setupWorld()
+        generateCells()
+        generation = 0
+        setGridSizeDisplay()
+        console.log(worldScaleAmount)
+    }
+}
+//decrease the number of cells
+const decreaseGridSize = () => {
+    if (worldScaleAmount > 10) {
+        worldScaleAmount -= 1
+        worldScale = worldSize/worldScaleAmount
+        worldResolution = worldSize/worldScale
+        setupWorld()
+        generateCells()
+        generation = 0
+        setGridSizeDisplay()
+        console.log(worldScaleAmount)
+    }
+}
+
+//increase the generations by one
+const stepForward = () => {
+    advanceGeneration()
+}
+
+//increase speed by a tenth of a second
+const speedUp = () => {
+    if(generationSpeed > 20) {
+        generationSpeed -= 10
+    }
+    startStopToggle()
+    startStopToggle()
+    console.log(generationSpeed)
+}
+//decrease speed by a tenth of a second
+const slowDown = () => {
+    if(generationSpeed < 3000) {
+        generationSpeed += 10
+    }
+    startStopToggle()
+    startStopToggle()
+    console.log(generationSpeed)
+}

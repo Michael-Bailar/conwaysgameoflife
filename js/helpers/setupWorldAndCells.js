@@ -6,10 +6,10 @@ const setupWorld = () => {
 }
 //this sets up the 2d array structure
 const createCells = () => {
-    let arr = new Array(worldResolution)
-    for(x = 0; x < worldResolution; x++){
-        let cols = new Array(worldResolution)
-        for(y = 0; y < worldResolution; y++){
+    let arr = new Array(worldScaleAmount)
+    for(x = 0; x < worldScaleAmount; x++){
+        let cols = new Array(worldScaleAmount)
+        for(y = 0; y < worldScaleAmount; y++){
             cols[y] = {
                 living:false,
                 id: (`${x}x${y}`),
@@ -23,12 +23,12 @@ const createCells = () => {
 const generateCells = () => {
     //setting cell colors here
     context.fillStyle = worldBackground
-    context.fillRect(0, 0, worldResolution, worldResolution)
+    context.fillRect(0, 0, worldScaleAmount, worldScaleAmount)
     context.fillStyle = cellColor
     /*looping through each cell and setting color based on living
      or dead */
-    for(y = 0; y < worldResolution; y++){
-        for(x = 0; x < worldResolution; x++){
+    for(y = 0; y < worldScaleAmount; y++){
+        for(x = 0; x < worldScaleAmount; x++){
             if(cells[x][y].living) {
                 context.fillRect(x,y,1,1)
             }
