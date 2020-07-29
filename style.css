@@ -3,6 +3,10 @@ body {
     background: rgb(51, 58, 65);
 }
 
+header {
+    margin-bottom: 0.25%;
+}
+
 #canvas {
     margin: 10%; 
     background-color: rgb(51, 58, 65);

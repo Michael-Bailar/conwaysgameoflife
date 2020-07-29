@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game of Life</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>The Game of Life</h1>
-    <canvas id="gameWorld"></canvas>
-    <br/>
-    <button id="startStop" onclick="runSim()" class="off">start/stop</button>
-    <button id="randomize" onclick="randomize()">Randomize</button>
-    <script src="js/helpers/setupWorldAndCells.js"></script>
-    <script src="js/helpers/advanceGeneration.js"></script>
-    <script src="js/index.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Game of Life</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>The Game of Life</h1>
+            <h3 id="generationDisplay"></h3>
+            <h3 id="gridSizeDisplay">Grid Size: 25 x 25</h3>
+            <button id="increaseGridSize" onclick="increaseGridSize()">**Increase</button>
+            <button id="decreaseGridSize" onclick="decreaseGridSize()">**Decrease</button>
+            </br>
+            </br>
+            <div>----------------------------------------------------------------------------------------------</div>
+            </br>
+            <button id="startStop" onclick="startStopToggle ()" class="off">start/stop</button>
+            <button id="stepForward" onclick="stepForward()">**Step Forward</button>
+            <button id="speedUp" onclick="speedUp()">**Speed up</button>
+            <button id="slowDown" onclick="slowDown()">**Slow Down</button>
+            <button id="clearCells" onclick="clearCells()">Clear</button>
+        </header>
+        <canvas id="gameWorld"></canvas>
+        <br/>
+        <button id="randomize" onclick="randomize()">Randomize</button>
+        <button id="preset1" onclick="preset1()">**Preset 1</button>
+        <button id="preset2" onclick="preset2()">**Preset 2</button>
+        <button id="preset3" onclick="preset3()">**Preset 3</button>
+        </br>
+        </br>
+        <h2>-- Rules --</h2>
+        <h3>1. Any live cell with two or three live neighbours survives.</h3>
+        <h3>2. Any dead cell with three live neighbours becomes a live cell.</h3>
+        <h3>3. All other live cells die in the next generation.</h3>
+
+        <!-- scripts -->
+        <script src="js/helpers/setupWorldAndCells.js"></script>
+        <script src="js/helpers/advanceGeneration.js"></script>
+        <script src="js/index.js"></script>
+        <!-- scripts -->
+    </body>
 </html>
