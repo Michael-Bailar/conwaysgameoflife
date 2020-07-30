@@ -2,13 +2,13 @@
 const worldBackground = "lightslategray"
 const cellColor = "navy"
 //declare speed
-let generationSpeed = 50
+let generationSpeed = 200
 let generation = 0
 
 //declare game world constants
 const gameWorld = document.getElementById('gameWorld')
 const context = gameWorld.getContext('2d')
-const worldSize = 500
+const worldSize = 600
 //number of cells wide
 let worldScaleAmount = 25
 let worldScale = worldSize/worldScaleAmount
@@ -74,15 +74,15 @@ gameWorld.addEventListener('click', () =>{
 
 //clear the game world
 const clearCells = () => {
-    for(y = 0; y < worldResolution; y++) {
-        for(x = 0; x < worldResolution; x++) {
-            cells[x][y].living = false
-        }
-    }
     if(startStopButton.classList.contains("on")) {
         startStopButton.classList.remove("on")
         startStopButton.classList.add("off")
         clearInterval(runSimInterval)
+    }
+    for(y = 0; y < worldResolution; y++) {
+        for(x = 0; x < worldResolution; x++) {
+            cells[x][y].living = false
+        }
     }
     generation = 0
     setGenerationDisplay()
@@ -102,6 +102,13 @@ const setGridSizeDisplay = () => {
     gridSizeDisplay.innerHTML = `Grid Size: ${worldScaleAmount} x ${worldScaleAmount}`
 }
 setGridSizeDisplay()
+
+//set the speed display on the page
+let speedDisplay = document.getElementById("speedDisplay")
+const setSpeedDisplay = () => {
+    speedDisplay.innerHTML = `Speed: ${(.001*generationSpeed).toFixed(3)} Generations per Second`
+}
+setSpeedDisplay()
 
 //increase the number of cells 
 const increaseGridSize = () => {
@@ -140,16 +147,17 @@ const speedUp = () => {
     if(generationSpeed > 20) {
         generationSpeed -= 10
     }
+    setSpeedDisplay()
     startStopToggle()
     startStopToggle()
-    console.log(generationSpeed)
+    
 }
 //decrease speed by a tenth of a second
 const slowDown = () => {
     if(generationSpeed < 3000) {
         generationSpeed += 10
     }
+    setSpeedDisplay()
     startStopToggle()
     startStopToggle()
-    console.log(generationSpeed)
 }
