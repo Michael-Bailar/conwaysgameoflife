@@ -1,10 +1,29 @@
+/* #headerSection, #worldSection, #presetSection, #rulesSection{
+    border: 1px solid black;
+} */
+
 body {
+    color: white;
     margin: 3%;
     background: rgb(51, 58, 65);
 }
 
-#canvas {
-    margin: 10%; 
-    background-color: rgb(51, 58, 65);
+#mainContainer {
+    display: flex;
 }
+
+#headerSection {
+    width: 20%;
+}
+
+#worldSection {
+    width:40%;
+    padding-top: 0%;
+}
+
+#rulesSection {
+    padding-top: 8%;
+}
+
+
 

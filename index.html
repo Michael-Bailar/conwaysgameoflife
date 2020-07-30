@@ -1,19 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game of Life</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>The Game of Life</h1>
-    <canvas id="gameWorld"></canvas>
-    <br/>
-    <button id="startStop" onclick="runSim()" class="off">start/stop</button>
-    <button id="randomize" onclick="randomize()">Randomize</button>
-    <script src="js/helpers/setupWorldAndCells.js"></script>
-    <script src="js/helpers/advanceGeneration.js"></script>
-    <script src="js/index.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Game of Life</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <container id="mainContainer">
+            <div id="headerSection">
+                <h1>The Game of Life</h1>
+                <h3 id="generationDisplay"></h3>
+                </br>
+                <h3 id="gridSizeDisplay"></h3>
+                <button id="increaseGridSize" onclick="increaseGridSize()">Increase</button>
+                <button id="decreaseGridSize" onclick="decreaseGridSize()">Decrease</button>
+                </br>
+                </br>
+                </br>
+                <h3 id="speedDisplay"></h3>
+                <button id="speedUp" onclick="speedUp()">Speed up</button>
+                <button id="slowDown" onclick="slowDown()">Slow Down</button>
+                </br>
+                </br>
+                </br>
+                <h3>Speed Controls</h3>
+                <button id="startStop" onclick="startStopToggle ()" class="off">start/stop</button>
+                <button id="stepForward" onclick="stepForward()">Step Forward</button>
+                <button id="clearCells" onclick="clearCells()">Clear</button>
+                </br>
+                </br>
+                </br>
+                <h3>Presets</h3>
+                <button id="randomize" onclick="randomize()">Randomize</button>
+                <button id="preset1" onclick="pulsarPreset()">Pulsar</button>
+                <button id="preset2" onclick="toadPreset()">Toad</button>
+                <button id="preset3" onclick="spaceshipPreset()">Spaceship</button>
+            </div>
+
+            <div id="worldSection">
+                <canvas id="gameWorld"></canvas>
+            </div>
+            <div id="rulesSection">
+                <h2>-- Rules --</h2></br>
+                <h3>1. Any live cell with two or three live neighbours survives.</h3></br>
+                <h3>2. Any dead cell with three live neighbours becomes a live cell.</h3></br>
+                <h3>3. All other live cells die in the next generation.</h3></br>
+            </div>
+        </container>
+        <!-- scripts -->
+        <script src="js/helpers/setupWorldAndCells.js"></script>
+        <script src="js/helpers/advanceGeneration.js"></script>
+        <script src="js/helpers/presets.js"></script>
+        <script src="js/index.js"></script>
+        <!-- scripts -->
+    </body>
 </html>
