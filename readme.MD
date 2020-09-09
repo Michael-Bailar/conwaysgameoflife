@@ -29,3 +29,6 @@ I realized it would be a little messy but I decided to try and do this with just
 # Future Improvements
 If I had some more time, I would have really liked to clean this up a bit by setting up more components and organizing my code better. I realized, by the last day of the project, that my code was not as clean as I wanted it to be.
 
+# Use
+If you want to see the app in action, just clone the repo and run index.html
+
